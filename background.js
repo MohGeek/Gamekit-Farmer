@@ -35,6 +35,9 @@ function vote(response){
 			break;
 		case NOTIFY_CAPTCHA:
 			var notification = new Notification('A captcha needs to be filled');
+			var myAudio = new Audio();
+			myAudio.src = "popup.mp3";
+			myAudio.play();
 			setTimeout(function() {
 				chrome.tabs.sendMessage(tabId, {text: CHECK_IF_FILLED}, vote);
 			},  Math.floor(Math.random() * 300) + 3000);
