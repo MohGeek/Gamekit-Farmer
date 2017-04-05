@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 				var recaptcha = document.getElementsByClassName("recaptcha-checkbox")[0];
 				if(recaptcha){
 					recaptcha.click();
-					sendResponse(FILL_CAPTCHA);
+					sendResponse({order: FILL_CAPTCHA, refreshId: msg.refreshId});
 				}
 				break;
 		}
@@ -14,21 +14,21 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 			case CAN_I_VOTE:
 				var recaptcha = document.getElementById(RECAPTCHA_SUBMIT_ID);
 				if(!recaptcha){
-					sendResponse(VOTE);
+					sendResponse({order: VOTE, refreshId: msg.refreshId});
 				}
 				break;
 			case CHECK_CAPTCHA_IMAGES:
 				if(document.getElementsByClassName("g-recaptcha-bubble-arrow")[0].parentElement.style.visibility == 'hidden'){
-					sendResponse(SEND_CAPTCHA);
+					sendResponse({order: SEND_CAPTCHA, refreshId: msg.refreshId});
 				}else{
-					sendResponse(NOTIFY_CAPTCHA);
+					sendResponse({order: NOTIFY_CAPTCHA, refreshId: msg.refreshId});
 				}
 				break;
-			case CHECK_IF_FILLED:
+			case CHECK_CAPTCHA_STATUS:
 				if(document.getElementsByClassName("g-recaptcha-bubble-arrow")[0].parentElement.style.visibility == 'hidden'){
-					sendResponse(SEND_CAPTCHA);
+					sendResponse({order: SEND_CAPTCHA, refreshId: msg.refreshId});
 				}else{
-					sendResponse(CHECK_IF_FILLED);
+					sendResponse({order: CHECK_IF_FILLED, refreshId: msg.refreshId});
 				}
 				break;
 		}

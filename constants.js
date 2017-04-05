@@ -1,12 +1,13 @@
 // Messages
-var NOTIFY_CAPTCHA = -1;
-var INIT = 0;
-var FILL_CAPTCHA = 1;
-var SEND_CAPTCHA = 2;
-var VOTE = 3;
+var INIT = 'init';
+var FILL_CAPTCHA = 'fill_captcha';
+var SEND_CAPTCHA = 'send_captcha';
+var VOTE = 'vote';
+var CHECK_IF_FILLED = 'check_if_filled';
+var NOTIFY_CAPTCHA = 'notify_captcha';
 var CAN_I_VOTE = 'can_i_vote';
 var CHECK_CAPTCHA_IMAGES = 'check_captcha_images';
-var CHECK_IF_FILLED = 'check_if_filled';
+var CHECK_CAPTCHA_STATUS = 'check_captcha_status';
 
 // DOM IDs and Classes
 var VOTE_CLASS_NAME = 'game-rating';
